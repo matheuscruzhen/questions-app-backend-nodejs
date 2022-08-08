@@ -1,6 +1,8 @@
 import express from 'express';
 import config from 'config';
 import cors from 'cors';
+import log from './utils/logger';
+import connect from './utils/connect';
 
 const app = express();
 
@@ -17,7 +19,7 @@ app.use(function (req, res, next) {
 const port = config.get<string>('port');
 
 app.listen(port, async () => {
-  console.log(`Server running at http://localhost:${port}`);
+  log.info(`Server running at http://localhost:${port}`);
 });
 
 app.use(express.json());
