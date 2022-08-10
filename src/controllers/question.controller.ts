@@ -1,9 +1,9 @@
-import { json, Request, Response } from 'express';
+import { Request, Response } from 'express';
 import Question from '../models/question.model';
 
 export const index = async (req: Request, res: Response) => {
   try {
-    const questions = Question.find();
+    const questions = await Question.find();
     return res.status(200).json(questions);
   } catch (error: any) {
     return res.status(400).json({ error: error.message });
@@ -14,7 +14,7 @@ export const show = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   try {
-    const question = Question.findOne({ _id: id });
+    const question = await Question.findOne({ _id: id });
     return res.status(200).json(question);
   } catch (error: any) {
     return res.status(400).json({ error: error.message });
@@ -23,7 +23,7 @@ export const show = async (req: Request, res: Response) => {
 
 export const store = async (req: Request, res: Response) => {
   try {
-    const question = Question.create(req.body);
+    const question = await Question.create(req.body);
     return res.status(200).json(question);
   } catch (error: any) {
     return res.status(400).json({ error: error.message });
