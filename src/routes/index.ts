@@ -5,8 +5,8 @@ const router = Router();
 
 router.get('/questions', questionController.index);
 router.get('/questions/:id', questionController.show);
-router.get('/questions', questionController.store);
-router.get('/questions/:id', questionController.update);
-router.get('/questions/:id', questionController.remove);
+router.post('/questions', questionController.store);
+router.patch('/questions/:id', questionController.update);
+router.delete('/questions/:id', questionController.remove);
 
 export default router;

@@ -24,6 +24,7 @@ export const show = async (req: Request, res: Response) => {
 export const store = async (req: Request, res: Response) => {
   try {
     const question = await Question.create(req.body);
+    console.log(question);
     return res.status(200).json(question);
   } catch (error: any) {
     return res.status(400).json({ error: error.message });
